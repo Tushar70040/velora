@@ -88,7 +88,9 @@ button{
   padding-right: 60px;
   font-family: BBH Sans Hegarty;
    
- 
+  h2{
+    font-family:  BBH Sans Hegarty;
+  }
   button:hover{
      transition: all 0.4s ease;
     background-color: rgb(255, 255, 255);
