@@ -1,8 +1,11 @@
 import Footer from "./footer";
+import { useContext } from "react";
+import { cartcontext } from "./main";
 import Nav from "./nav";
 
 
-export default function Cart({ cart, add, remove }) {
+export default function Cart() {
+    const{ add,cart,remove} = useContext(cartcontext)
     return (
         <>
             <Nav cart={cart} />

@@ -1,4 +1,4 @@
-import { StrictMode ,useState} from 'react'
+import { StrictMode ,useState, createContext} from 'react'
 import { createRoot } from 'react-dom/client'
 import './index.css'
 
@@ -10,6 +10,8 @@ import Womens from './women/womens.jsx';
 import Electronics from './electro/electronics.jsx';
 
 import { createBrowserRouter, RouterProvider } from "react-router";
+
+export const cartcontext = createContext();//contextapi
 
 //always when we have to make a fucntion that is going to use
 //in any child compoenent we make it in a main.jsx (parent component)
@@ -61,11 +63,7 @@ function Main() {
     },
     {
       path: "/cart",
-      element: <Cart
-        cart={cart}
-        add={add}
-        remove={remove}
-      />
+      element: <Cart/>
     },
     {path:"/men",
       element:<Mens add={add} cart={cart}/>
@@ -81,8 +79,15 @@ function Main() {
     }
     
   ])
+//using contextapi
+  return (
+    <cartcontext.Provider value={{add,cart,remove}}> 
+          <RouterProvider router={router} />
+    </cartcontext.Provider>
+     
 
-  return <RouterProvider router={router} />
+  )
+ 
 
 }
 
